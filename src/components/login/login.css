@@ -1,0 +1,37 @@
+.login-container {
+  max-width: 800px;
+  width: 60%;
+  height: 80vh;
+  background-color: #dadada;
+  border-radius: 10px;
+  display: grid;
+  padding: 2em 2em;
+  grid-template-rows: 5em 1fr;
+}
+.login-title {
+  display: grid;
+  place-items: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.login-body {
+  text-align: center;
+}
+
+.body-input {
+  display: grid;
+  grid-template-columns: 50px 50%;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  margin: 2em auto;
+}
+.span {
+  text-transform: uppercase;
+  margin-top: 1em;
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 82%;
+}
