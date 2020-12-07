@@ -3,9 +3,8 @@ import "./login.css";
 import TextField from "@material-ui/core/TextField";
 import { Avatar, Button } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
-import propTypes from "prop-types";
 
-const LoginForm = (props) => {
+const LoginForm = ({ signin }) => {
   const [details, setDetails] = useState({
     username: "",
     password: "",
@@ -13,88 +12,105 @@ const LoginForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.signin(details);
+    signin(details);
+    setDetails({ ...details, username: "", password: "" });
   };
 
   return (
-    <form className="login-body" onSubmit={handleSubmit}>
-      {/* username field */}
-      <div className="body-input">
-        <div>
-          <Avatar style={{ background: "gray" }} />
-        </div>
-        <TextField
-          type="text"
-          name="username"
-          onChange={(event) =>
-            setDetails({ ...details, username: event.target.value })
-          }
-          required
-          id="standard-required"
-          label="username/email"
-        />
+    <div className="login-container">
+      <div className="login-title">
+        <h2>Login</h2>
       </div>
-
-      {/* password field */}
-      <div className="body-input">
-        <div>
-          <Avatar style={{ background: "gray" }}>
-            <LockIcon />
-          </Avatar>
+      <form className="login-body" onSubmit={handleSubmit}>
+        {/* username field */}
+        <div className="body-input">
+          <div>
+            <Avatar style={{ background: "gray" }} />
+          </div>
+          <TextField
+            type="text"
+            name="username"
+            value={details.username}
+            onChange={(event) =>
+              setDetails({
+                ...details,
+                [event.target.name]: event.target.value,
+              })
+            }
+            required
+            id="standard-required"
+            label="username/email"
+          />
         </div>
-        <TextField
-          type="password"
-          name="password"
-          required
-          id="standard-required"
-          label="password"
-        />
-      </div>
 
-      {/* submit button */}
-      <Button
-        variant="contained"
-        style={{ width: "45%" }}
-        color="primary"
-        type="submit"
-      >
-        login
-      </Button>
+        {/* password field */}
+        <div className="body-input">
+          <div>
+            <Avatar style={{ background: "gray" }}>
+              <LockIcon />
+            </Avatar>
+          </div>
+          <TextField
+            type="password"
+            name="password"
+            value={details.password}
+            onChange={(event) =>
+              setDetails({
+                ...details,
+                [event.target.name]: event.target.value,
+              })
+            }
+            required
+            id="standard-required"
+            label="password"
+          />
+        </div>
 
-      <div className="span">Have no Account?</div>
-      <div
-        style={{
-          width: "40%",
-          padding: "0 .4em",
-          margin: "auto",
-          marginTop: "2.5em",
-        }}
-      >
+        {/* submit button */}
         <Button
           variant="contained"
-          style={{
-            background: "#3b5998",
-            margin: "2px 0 5px 5px",
-          }}
+          style={{ width: "45%" }}
           color="primary"
+          type="submit"
         >
-          facebook
+          login
         </Button>
-        <Button
-          variant="contained"
+
+        <div className="span">Have no Account?</div>
+        <div
           style={{
-            background: "#00acee",
-            margin: "2px 0 5px 5px",
-            color: "#fcfcfc",
+            width: "40%",
+            padding: "0 .4em",
+            margin: "auto",
+            marginTop: "2.5em",
           }}
         >
-          twitter
-        </Button>
-      </div>
-      <div className="footer">
-        <a href="login.js">Forgot Password?</a>
-      </div>
-    </form>
+          <Button
+            variant="contained"
+            style={{
+              background: "#3b5998",
+              margin: "2px 0 5px 5px",
+            }}
+            color="primary"
+          >
+            facebook
+          </Button>
+          <Button
+            variant="contained"
+            style={{
+              background: "#00acee",
+              margin: "2px 0 5px 5px",
+              color: "#fcfcfc",
+            }}
+          >
+            twitter
+          </Button>
+        </div>
+        <div className="footer">
+          <a href="login.js">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
   );
 };
 

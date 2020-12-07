@@ -35,3 +35,11 @@
   justify-content: flex-end;
   width: 82%;
 }
+.home{
+  height: 10em;
+  width: 70%;
+  background-color: #bdbdbd;
+  display: grid;
+  place-items: center;
+
+}
