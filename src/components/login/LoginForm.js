@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import { Avatar, Button } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
 
-const LoginForm = ({ signin }) => {
+const LoginForm = ({ signin, error }) => {
   const [details, setDetails] = useState({
     username: "",
     password: "",
@@ -21,7 +21,14 @@ const LoginForm = ({ signin }) => {
       <div className="login-title">
         <h2>Login</h2>
       </div>
+
       <form className="login-body" onSubmit={handleSubmit}>
+        {error !== "" ? (
+          <div className="error">{error}</div>
+        ) : (
+          <div style={{ height:"2.5em", margin: "0 auto" }} />
+        )}
+
         {/* username field */}
         <div className="body-input">
           <div>

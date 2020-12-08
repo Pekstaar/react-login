@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import "./components/login/login.css";
 import LoginForm from "./components/login/LoginForm";
+import { Button } from "@material-ui/core";
 
 function App() {
   const defaultUser = {
@@ -9,7 +10,7 @@ function App() {
     password: "admin123",
   };
 
-  const [error, setError] = useState(["error1"]);
+  const [error, setError] = useState("");
 
   const [user, setuser] = useState({ username: "", password: "" });
 
@@ -23,20 +24,25 @@ function App() {
         username: details.username,
         password: details.password,
       });
-
-      console.log(user);
     } else {
-      setError(error.push("invalid details"));
+      setError("invalid username/password!");
     }
+  };
+
+  const signOut = () => {
+    setuser({ username: "", password: "" });
   };
   return (
     <div className="App">
       {user.username !== "" && user.password !== "" ? (
         <div className="home">
           <h3>YOU LOGGED IN! Welcome {user.username}</h3>
+          <Button onClick={signOut} variant="contained">
+            Logout
+          </Button>
         </div>
       ) : (
-        <LoginForm signin={signin} />
+        <LoginForm signin={signin} error={error} />
       )}
     </div>
   );

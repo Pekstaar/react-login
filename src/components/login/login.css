@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   grid-gap: 10px;
-  margin: 2em auto;
+  margin :0 0 2em 0;
 }
 .span {
   text-transform: uppercase;
@@ -43,3 +43,16 @@
   place-items: center;
 
 }
+.error{
+  display: grid;
+  place-items: center;
+  color: #f1f1f1;
+  font-size: 16px;
+  height:2.5em;
+  background: #c42c4d;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: .5em;
+  border-radius: .2em .2em 0 0;
+}
+  
